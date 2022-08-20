@@ -30,35 +30,32 @@ def compare(user_sum, computer_sum):
         return "You win, your score is higher than opponent's!"
     else:
         return "You lose, opponent score is higher than yours"
-
-user_cards = []
-computer_cards = []
-for _ in range(2):
-    user_cards.append(deal_card())
-    computer_cards.append(deal_card())
-
-
-
-game_end = False
-while not game_end:
-    user_sum = calculate_score(user_cards)
-    computer_sum = calculate_score(computer_cards)
-    print(f"User cards: {user_cards} User score: {user_sum}\nComputer cards: [{computer_cards[0]}, *]")
-    if user_sum == 0 or computer_sum == 0 or user_sum > 21:
-        game_end = True
-    else:
-        user_should_deal = input("Type 'y' to get another card, or 'n' to pass: ")
-        if user_should_deal == 'y':
-            user_cards.append(deal_card())
-        else:
+def play_game():
+    user_cards = []
+    computer_cards = []
+    for _ in range(2):
+        user_cards.append(deal_card())
+        computer_cards.append(deal_card())
+    game_end = False
+    while not game_end:
+        user_sum = calculate_score(user_cards)
+        computer_sum = calculate_score(computer_cards)
+        print(f"User cards: {user_cards} User score: {user_sum}\nComputer cards: [{computer_cards[0]}, *]")
+        if user_sum == 0 or computer_sum == 0 or user_sum > 21:
             game_end = True
+        else:
+            user_should_deal = input("Type 'y' to get another card, or 'n' to pass: ")
+            if user_should_deal == 'y':
+                user_cards.append(deal_card())
+            else:
+                game_end = True
+    while computer_sum != 0 and computer_sum < 17:
+        computer_cards.append(deal_card())
+        computer_sum = calculate_score(computer_cards)
+    print(f"{compare(user_sum,computer_sum)}\nThe scores are: \nUser cards: {user_cards} User score: {user_sum}\nComputer cards: {computer_cards} Computer score:{computer_sum}")
 
 
-while computer_sum != 0 and computer_sum < 17:
-    computer_cards.append(deal_card())
-    computer_sum = calculate_score(computer_cards)
-
-print(f"{compare(user_sum,computer_sum)}\nThe scores are: \nUser cards: {user_cards} User score: {user_sum}\nComputer cards: {computer_cards} Computer score:{computer_sum}")
-
+while input("Do you want to play Blackjack? 'y' or 'no': ") == 'y':
+    play_game()
 
 
