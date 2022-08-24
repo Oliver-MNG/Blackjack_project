@@ -1,4 +1,4 @@
-
+import os
 import random
 def deal_card():
     """This function returns the dealed cards"""
@@ -57,6 +57,7 @@ def play_game():
 
 
 while input("Do you want to play Blackjack? 'y' or 'no': ") == 'y':
+    os.system('clear')
     play_game()
 
 
