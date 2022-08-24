@@ -1,5 +1,6 @@
 import os
 import random
+from logo_blackjack import logo
 def deal_card():
     """This function returns the dealed cards"""
     cards = [11,2,3,4,5,6,7,8,9,10,10,10,10,11,2,3,4,5,6,7,8,9,10,10,10,10,11,2,3,4,5,6,7,8,9,10,10,10,10,11,2,3,4,5,6,7,8,9,10,10,10,10]
@@ -55,7 +56,7 @@ def play_game():
         computer_sum = calculate_score(computer_cards)
     print(f"{compare(user_sum,computer_sum)}\nThe scores are: \nUser cards: {user_cards} User score: {user_sum}\nComputer cards: {computer_cards} Computer score:{computer_sum}")
 
-
+print(logo)
 while input("Do you want to play Blackjack? 'y' or 'no': ") == 'y':
     os.system('clear')
     play_game()
